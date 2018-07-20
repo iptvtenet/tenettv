@@ -1,3 +1,4 @@
+package utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -9,7 +10,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class WebDriverBase implements Variables {
 
-    static WebDriver driver;
+    public static WebDriver driver;
 
     static {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\chromdriver\\chromedriver.exe");
@@ -17,14 +18,15 @@ public class WebDriverBase implements Variables {
 
     @BeforeTest(alwaysRun = true)
     public void setUp() {
+
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized","--incognito");
+        options.addArguments("--start-maximized", "--incognito");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get(url);
+        driver.get(Url);
         driver.manage().timeouts().implicitlyWait(8, SECONDS);
 
-        Tools.setDriver(driver);
+        utils.Tools.setDriver(driver);
 //        BodyOfTests.setDriver(driver);
     }
 

@@ -1,13 +1,15 @@
+package utils;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Tools {
 
-    static WebDriver driver;
+    private static WebDriver driver;
 
-    public static void setDriver(WebDriver browser) {
-        Tools.driver = browser;
+    public static void setDriver(WebDriver driver) {
+        Tools.driver = driver;
     }
 
     public static WebElement myElement(By by)

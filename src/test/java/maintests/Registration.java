@@ -22,15 +22,6 @@ public class Registration {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\chromdriver\\chromedriver.exe");
     }
 
-//    @Test (groups = "positiveLogin")
-//    public void registration()
-//    {
-//        tools.myElement(By.cssSelector(".loginform2")).click();
-//        tools.myElement(By.cssSelector("#login")).sendKeys(Variables.login);
-//        tools.myElement(By.cssSelector("#passw")).sendKeys(Variables.Password);
-//        tools.myElement(By.cssSelector("#loginuser")).click();
-//        Assert.assertEquals("TV КАНАЛЫ", tools.myElement(By.cssSelector("#title_pazdel")).getText());
-//    }
 
     @Test(groups = "positiveLogin")
     public void registration() throws InterruptedException {
@@ -54,7 +45,7 @@ public class Registration {
         driver.manage().timeouts().implicitlyWait(8, SECONDS);
 
         utils.Tools.setDriver(driver);
-//        BodyOfTests.setDriver(driver);
+
     }
 
     public void finish() throws InterruptedException {

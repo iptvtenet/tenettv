@@ -1,0 +1,24 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Sanity Suite" verbose="0" group-by-instances="true">
+
+
+    <!--<listeners>-->
+
+        <!--<listener class-name="utility.AnnotationTransformer"></listener>-->
+
+    <!--</listeners>-->
+
+
+    <test name = "TestJira">
+       <groups>
+           <run>
+               <include name="positiveLogin"/>
+           </run>
+       </groups>
+
+        <classes>
+            <class name="maintests.Registration"/>
+        </classes>
+
+    </test>
+</suite>

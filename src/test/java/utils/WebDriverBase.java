@@ -27,7 +27,7 @@ public class WebDriverBase implements Variables {
         driver.manage().timeouts().implicitlyWait(8, SECONDS);
 
         utils.Tools.setDriver(driver);
-//        BodyOfTests.setDriver(driver);
+
     }
 
     @AfterTest(alwaysRun = true)

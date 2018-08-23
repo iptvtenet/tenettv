@@ -1,5 +1,6 @@
 package utils;
 
+import maintests.Variables;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -10,13 +11,13 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class WebDriverBase implements Variables {
 
-    public static WebDriver driver;
+    static WebDriver driver;
 
     static {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\chromdriver\\chromedriver.exe");
     }
 
-    @BeforeTest(alwaysRun = true)
+  //  @BeforeTest(alwaysRun = true)
     public void setUp() {
 
         ChromeOptions options = new ChromeOptions();
@@ -26,11 +27,12 @@ public class WebDriverBase implements Variables {
         driver.get(Url);
         driver.manage().timeouts().implicitlyWait(8, SECONDS);
 
-        utils.Tools.setDriver(driver);
+   //     maintests.BodyTests.setDriver(driver);
+   //     utils.Tools.setDriver(driver);
 
     }
 
-    @AfterTest(alwaysRun = true)
+  //  @AfterTest(alwaysRun = true)
     public void finish() throws InterruptedException {
         Thread.sleep(5000);
         driver.quit();

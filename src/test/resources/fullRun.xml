@@ -9,15 +9,16 @@
     <!--</listeners>-->
 
 
-    <test name = "TestJira">
+    <test name = "TestTenetTV">
        <groups>
            <run>
                <include name="positiveLogin"/>
+               <include name="negativeLogin"/>
            </run>
        </groups>
 
         <classes>
-            <class name="maintests.Registration"/>
+            <class name="maintests.Tests"/>
         </classes>
 
     </test>

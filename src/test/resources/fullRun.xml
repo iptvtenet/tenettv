@@ -1,25 +1,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Sanity Suite" verbose="0" group-by-instances="true">
 
-
-    <!--<listeners>-->
-
-        <!--<listener class-name="utility.AnnotationTransformer"></listener>-->
-
-    <!--</listeners>-->
-
-
-    <test name = "TestTenetTV">
-       <groups>
-           <run>
-               <include name="positiveLogin"/>
-               <include name="negativeLogin"/>
-           </run>
-       </groups>
-
+<suite name="My test suite">
+    <test name="testing">
         <classes>
-            <class name="maintests.Tests"/>
+            <class name="maintests.Tests" />
         </classes>
-
     </test>
 </suite>
+

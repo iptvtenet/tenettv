@@ -1,6 +1,7 @@
 package maintests;
 
 import org.testng.annotations.*;
+import utils.RetryAnalyzer;
 import utils.Tools;
 
 public class Tests {
@@ -10,20 +11,30 @@ public class Tests {
     Tools tools = new Tools();
 
 
+
+    @DataProvider(name = "negativeAuthentication")
+
+    public static Object[][] credentials() {
+
+        return new Object[][] { { "testuser_1", "Test@123" }, { "testuser_1", "Test@123" }};
+
+    }
+
+
     @Test(groups = "positiveLogin")
     public void testPositiveLogin() throws InterruptedException {
         body.positiveLogin();
     }
 
 
-    @Test(groups = "positiveLogin", priority = 1)
+    @Test(groups = "positiveLogin", priority = 1, retryAnalyzer = RetryAnalyzer.class)
     public void testAboutProject() throws InterruptedException {
         body.aboutProject();
     }
 
-    @Test(groups = "negativeLogin")
-    public void testNegativeLogin() throws InterruptedException {
-        body.negativeLogen();
+    @Test(groups = "negativeLogin", dataProvider = "negativeAuthentication")
+    public void testNegativeLogin(String login, String password) throws InterruptedException {
+        body.negativeLogen(login, password);
     }
 
 

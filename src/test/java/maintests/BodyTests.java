@@ -2,6 +2,7 @@ package maintests;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import utils.Tools;
 
@@ -12,11 +13,13 @@ public class BodyTests {
 
     public void positiveLogin() throws InterruptedException {
         login(Variables.login, Variables.Password);
-        Assert.assertEquals("TV КАНАЛЫ", tools.myElement(By.cssSelector("#title_pazdel")).getText());
+        WebElement test = tools.myElement(By.cssSelector("#title_pazdel"));
+        Thread.sleep(2000);
+        Assert.assertEquals("TV КАНАЛЫ", test.getText());
     }
 
-    public void negativeLogen() throws InterruptedException {
-        login("testFaile", "testFaile");
+    public void negativeLogen(String login, String password) throws InterruptedException {
+        login(login, password);
         Assert.assertEquals("Увы, но такая комбинация логина и пароля отсутствует.", tools.myElement(By.cssSelector(".bootstrap-dialog-message > div:nth-child(1) > p:nth-child(1)")).getText());
 
     }

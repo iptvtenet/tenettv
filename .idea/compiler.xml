@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="tenet" />
+        <module name="tenettv" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
       <module name="tenet" target="1.6" />
+      <module name="tenettv" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>

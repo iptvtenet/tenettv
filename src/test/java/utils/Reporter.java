@@ -4,11 +4,15 @@ import org.testng.IReporter;
 import org.testng.ISuite;
 import org.testng.xml.XmlSuite;
 
+import javax.mail.MessagingException;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 public class Reporter implements IReporter {
 
     TestListener listener = new TestListener();
+
+    Tools tools = new Tools();
 
     @Override
     public void generateReport(List<XmlSuite> list, List<ISuite> list1, String s) {
@@ -30,5 +34,14 @@ public class Reporter implements IReporter {
                 System.out.println(listener.listReportsNegative.get(i));
             }
         }
+        try {
+            tools.sendMail();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

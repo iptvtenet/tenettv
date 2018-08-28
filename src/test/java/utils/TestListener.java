@@ -3,10 +3,13 @@ package utils;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
+import javax.mail.MessagingException;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestListener extends TestListenerAdapter {
+
 
     static List<String> listReportsPositive = new ArrayList<String>();
     static List<String> listReportsNegative = new ArrayList<String>();
@@ -19,12 +22,12 @@ public class TestListener extends TestListenerAdapter {
         String stackTrace = "";
         listReportsPositive.add(testName + " " + className + " " + metodName + " " + stackTrace);
 
+
     }
 
 
     @Override
-    public void onTestFailure(ITestResult testResult)
-    {
+    public void onTestFailure(ITestResult testResult) {
         String testName = testResult.getName();
         String className = testResult.getTestClass().toString();
         String metodName = testResult.getTestName();

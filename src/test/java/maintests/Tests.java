@@ -8,17 +8,15 @@ import utils.Tools;
 @Listeners(TestListener.class)
 public class Tests {
 
-
     BodyTests body = new BodyTests();
     Tools tools = new Tools();
-
 
 
     @DataProvider(name = "negativeAuthentication")
 
     public static Object[][] credentials() {
 
-        return new Object[][] { { "testuser_1", "Test@123" }, { "testuser_1", "Test@123" }};
+        return (Object[][]) Variables.data;
 
     }
 
@@ -34,7 +32,7 @@ public class Tests {
         body.aboutProject();
     }
 
-    @Test(groups = "negativeLogin", dataProvider = "negativeAuthentication")
+    @Test(groups = "negativeLogin", dataProvider = "negativeAuthentication", threadPoolSize = 3)
     public void testNegativeLogin(String login, String password) throws InterruptedException {
         body.negativeLogen(login, password);
     }

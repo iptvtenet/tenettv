@@ -29,7 +29,7 @@ public class Tests {
     }
 
 
-    @Test(groups = "positiveLogin", priority = 1, retryAnalyzer = RetryAnalyzer.class)
+    @Test(groups = "positiveLogin", priority = 1, retryAnalyzer = RetryAnalyzer.class, dependsOnMethods = "testPositiveLogin")
     public void testAboutProject() throws InterruptedException {
         body.aboutProject();
     }

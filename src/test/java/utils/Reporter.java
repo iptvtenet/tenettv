@@ -12,8 +12,23 @@ public class Reporter implements IReporter {
 
     @Override
     public void generateReport(List<XmlSuite> list, List<ISuite> list1, String s) {
-        for (int i = 0; i < listener.listReports.size(); i++) {
-            System.out.println(listener.listReports.get(i));
+        for (int i = 0; i < listener.listReportsPositive.size(); i++) {
+            System.out.println(listener.listReportsPositive.get(i));
+        }
+
+        System.out.println("");
+        System.out.println("");
+
+
+
+        if(listener.listReportsNegative.size() < 1)
+        {
+            System.out.println("all will be alright");
+        }
+        else {
+            for (int i = 0; i < listener.listReportsNegative.size(); i++) {
+                System.out.println(listener.listReportsNegative.get(i));
+            }
         }
     }
 }

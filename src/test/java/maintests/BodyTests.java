@@ -15,12 +15,12 @@ public class BodyTests {
         login(Variables.login, Variables.Password);
         WebElement test = tools.myElement(By.cssSelector("#title_pazdel"));
         Thread.sleep(2000);
-        Assert.assertEquals("TV КАНАЛЫ", test.getText());
+        Assert.assertEquals(Variables.tvChannels, test.getText());
     }
 
     public void negativeLogen(String login, String password) throws InterruptedException {
         login(login, password);
-        Assert.assertEquals("Увы, но такая комбинация логина и пароля отсутствует.", tools.myElement(By.cssSelector(".bootstrap-dialog-message > div:nth-child(1) > p:nth-child(1)")).getText());
+        Assert.assertEquals(Variables.badLogin, tools.myElement(By.cssSelector(".bootstrap-dialog-message > div:nth-child(1) > p:nth-child(1)")).getText());
 
     }
 

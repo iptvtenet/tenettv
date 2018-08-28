@@ -2,8 +2,10 @@ package maintests;
 
 import org.testng.annotations.*;
 import utils.RetryAnalyzer;
+import utils.TestListener;
 import utils.Tools;
 
+@Listeners(TestListener.class)
 public class Tests {
 
 

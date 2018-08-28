@@ -1,6 +1,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="My test suite">
+
+    <listeners>
+        <listener class-name= "utils.Reporter" />
+    </listeners>
+
     <test name="testing">
         <classes>
             <class name="maintests.Tests" />

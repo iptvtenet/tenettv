@@ -23,7 +23,7 @@ public class Tools {
     private static WebDriver driver;
 
     private final static String username = "808nps@gmail.com";
-    static String password = "droplles1_S1";
+    static String password = "myPassword";
     static Multipart multipart = new MimeMultipart();
 
 

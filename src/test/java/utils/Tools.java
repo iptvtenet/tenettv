@@ -21,9 +21,12 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class Tools {
 
     private static WebDriver driver;
+    static {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\chromdriver\\chromedriver.exe");
+    }
 
-    private final static String username = "808nps@gmail.com";
-    static String password = "myPassword";
+    private final static String username = "iptvtenet@gmail.com";
+    static String password = "iptv123321";
     static Multipart multipart = new MimeMultipart();
 
 
@@ -36,15 +39,8 @@ public class Tools {
         WebElement element = driver.findElement(selector);
         element.clear();
         element.sendKeys(data);
-
         return element;
     }
-
-
-    static {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\chromdriver\\chromedriver.exe");
-    }
-
 
     public static void setUp() {
 
@@ -89,10 +85,10 @@ public class Tools {
             {
                 Session session = getSession();
                 MimeMessage message = new MimeMessage(session);
-                message.setFrom(new InternetAddress("808nps@gmail.com")); // from email
+                message.setFrom(new InternetAddress("iptvtenet@gmail.com")); // from email
                 // subject = "Test :: failure"+ EnvironmentHelper.getCurrentDate();
                 subject = "Test :: failure" + "тут добавлялась дата";
-                recpients = "808nps@gmail.com"; // to whom email
+                recpients = "iptvtenet@gmail.com"; // to whom email
                 message.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(recpients));
                 message.setSubject(subject);
                 // Set Subject: header field

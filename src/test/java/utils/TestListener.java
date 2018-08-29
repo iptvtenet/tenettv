@@ -3,8 +3,6 @@ package utils;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
-import javax.mail.MessagingException;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 

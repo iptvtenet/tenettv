@@ -2,7 +2,6 @@ package utils;
 
 
 import maintests.Variables;
-import org.apache.commons.io.FilenameUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,7 +11,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
 import java.io.FileNotFoundException;
 import java.util.Properties;
 
@@ -21,13 +19,13 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 public class Tools {
 
     private static WebDriver driver;
+
     static {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\chromdriver\\chromedriver.exe");
     }
 
-    private final static String username = "iptvtenet@gmail.com";
     static String password = "iptv123321";
-    static Multipart multipart = new MimeMultipart();
+    private final static String username = "iptvtenet@gmail.com";
 
 
     public static WebElement myElement(By by) {
@@ -76,33 +74,25 @@ public class Tools {
 
 
     public static void sendMail() throws FileNotFoundException, javax.mail.MessagingException {
-       // password = FilenameUtils.normalize("G:\\QA\\login.txt").toString(); // my, need test!
+
         String subject;
         String recpients;
         try {
-           // if (multipart.getCount() != 0)
-            if (true)
-            {
-                Session session = getSession();
-                MimeMessage message = new MimeMessage(session);
-                message.setFrom(new InternetAddress("iptvtenet@gmail.com")); // from email
-                // subject = "Test :: failure"+ EnvironmentHelper.getCurrentDate();
-                subject = "Test :: failure" + "тут добавлялась дата";
-                recpients = "iptvtenet@gmail.com"; // to whom email
-                message.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(recpients));
-                message.setSubject(subject);
-                // Set Subject: header field
-                message.setSubject("This is the Subject Line!");
-                // Now set the actual message
-                message.setText("This is actual message ++++ TEST");
-              //  message.setContent(multipart);
-                message.setText("body of mail");
-//                System.out.println("Sending letter ...");
-                Transport.send(message);
-                System.out.println("Done");
-            } else {
-                System.out.println("well done");
-            }
+            Session session = getSession();
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("iptvtenet@gmail.com")); // from email
+            subject = "Test :: failure" + "if need, can add a date";
+            recpients = "iptvtenet@gmail.com"; // to whom email
+            message.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(recpients));
+            message.setSubject(subject);
+            // Set Subject: header field
+            message.setSubject("This is the Subject Line!");
+            // Now set the actual message
+            message.setText("This is actual message ++++ TEST");
+            message.setText("body of mail");
+            Transport.send(message);
+            System.out.println("Done");
+
         } catch (MessagingException e) {
             e.printStackTrace();
         }

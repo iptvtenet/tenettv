@@ -88,7 +88,7 @@ public class Tools {
             // Set Subject: header field
             message.setSubject("This is the Subject Line!");
             // Now set the actual message
-            message.setText("This is actual message ++++ TEST");
+            message.setText("This is actual message ++++ ");
             message.setText("body of mail");
             Transport.send(message);
             System.out.println("Done");

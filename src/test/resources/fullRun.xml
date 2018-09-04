@@ -1,6 +1,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="My test suite">
+<!--<suite name="My test suite" parallel="methods" thread-count="2">-->
 
     <listeners>
         <listener class-name= "utils.Reporter" />

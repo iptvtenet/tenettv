@@ -34,6 +34,6 @@ public class BodyTests {
         login(Variables.login, Variables.Password);
         tools.myElement(By.cssSelector("#item_0 > a:nth-child(1)")).click();
         tools.myElement(By.cssSelector(".top-menu-left > li:nth-child(2) > a:nth-child(1)")).click();
-        Assert.assertEquals("TENET-TV — ВСЕ, ЧТО ЛЮБИШЬ", tools.myElement(By.cssSelector(".o-proeke-tenet-tv > h1:nth-child(1)")).getText());
+        Assert.assertEquals(Variables.seeTV, tools.myElement(By.cssSelector(".o-proeke-tenet-tv > h1:nth-child(1)")).getText());
     }
 }

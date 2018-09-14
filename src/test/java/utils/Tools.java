@@ -7,6 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import pages.start;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -18,41 +23,43 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class Tools {
 
-    private static WebDriver driver;
+    public WebDriver driver;
 
-    static {
+
+     {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\chromdriver\\chromedriver.exe");
     }
 
-    static String password = "iptv123321";
-    private final static String username = "iptvtenet@gmail.com";
-
-
-    public static WebElement myElement(By by) {
-        WebElement element = driver.findElement(by);
-        return element;
+    public void login(String login, String password) {
+        driver.findElement(By.cssSelector(start.enter)).click();
+        driver.findElement(By.cssSelector(start.fieldLogin)).sendKeys(login);
+        driver.findElement(By.cssSelector(start.fieldPassword)).sendKeys(password);
+        driver.findElement(By.cssSelector(start.buttonLogin)).click();
     }
 
-    public static WebElement clearAndFill(By selector, String data) {
+
+    public WebElement clearAndFill(By selector, String data) {
         WebElement element = driver.findElement(selector);
         element.clear();
         element.sendKeys(data);
         return element;
     }
 
-    public static void setUp() {
+    @BeforeMethod(alwaysRun = true)
+    public void setUp() {
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized", "--incognito");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get(Variables.Url);
+        driver.get(Variables.URL);
         driver.manage().timeouts().implicitlyWait(8, SECONDS);
 
     }
-
-    public static void finish() throws InterruptedException {
-        Thread.sleep(200);
+    @AfterMethod(alwaysRun = true)
+    public void finish() throws InterruptedException {
+         Thread.sleep(200);
+        //driver.wait(200);
         driver.quit();
     }
 
@@ -67,13 +74,13 @@ public class Tools {
         return Session.getInstance(props,
                 new Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication(username, password);
+                        return new PasswordAuthentication(Variables.USERNAME, Variables.MAILPASSWORD);
                     }
                 });
     }
 
 
-    public static void sendMail() throws FileNotFoundException, javax.mail.MessagingException {
+    public static void sendMail(String positive, String negative) throws FileNotFoundException, javax.mail.MessagingException {
 
         String subject;
         String recpients;
@@ -88,8 +95,7 @@ public class Tools {
             // Set Subject: header field
             message.setSubject("This is the Subject Line!");
             // Now set the actual message
-            message.setText("This is actual message ++++ ");
-            message.setText("body of mail");
+            message.setText(positive + " /n" + negative);
             Transport.send(message);
             System.out.println("Done");
 

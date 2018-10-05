@@ -15,10 +15,10 @@ public class TestListener extends TestListenerAdapter {
     @Override
     public void onTestSuccess(ITestResult testResult) {
         String testName = testResult.getName();
-        String metodName = testResult.getTestName();
+        String methodName = testResult.getTestName();
         String className = testResult.getTestClass().toString();
         String stackTrace = "";
-        listReportsPositive.add(testName + " " + className + " " + metodName + " " + stackTrace);
+        listReportsPositive.add(testName + " " + className + " " + methodName + " " + stackTrace + " ");
 
     }
 
@@ -26,9 +26,9 @@ public class TestListener extends TestListenerAdapter {
     public void onTestFailure(ITestResult testResult) {
         String testName = testResult.getName();
         String className = testResult.getTestClass().toString();
-        String metodName = testResult.getTestName();
+        String methodName = testResult.getTestName();
         String stackTrace = "";
-        listReportsNegative.add(testName + " " + className + " " + metodName + " " + stackTrace);
+        listReportsNegative.add(testName + " " + className + " " + methodName + " " + stackTrace);
     }
 
 

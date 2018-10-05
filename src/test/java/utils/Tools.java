@@ -6,11 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import pages.start;
 
 import javax.mail.*;
@@ -18,13 +15,11 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.FileNotFoundException;
 import java.util.Properties;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
+import java.util.concurrent.TimeUnit;
 
 public class Tools {
 
     public WebDriver driver;
-
 
      {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\chromdriver\\chromedriver.exe");
@@ -47,19 +42,15 @@ public class Tools {
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--start-maximized", "--incognito");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(Variables.URL);
-        driver.manage().timeouts().implicitlyWait(8, SECONDS);
+        driver.manage().deleteAllCookies();
+        driver.manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
 
     }
     @AfterMethod(alwaysRun = true)
-    public void finish() throws InterruptedException {
-         Thread.sleep(200);
-        //driver.wait(200);
+    public void finish() {
         driver.quit();
     }
 
@@ -95,7 +86,8 @@ public class Tools {
             // Set Subject: header field
             message.setSubject("This is the Subject Line!");
             // Now set the actual message
-            message.setText(positive + " /n" + negative);
+            message.setText("Positive tests: " + positive + "                Negative tests: " + negative);
+            message.setFileName("G:\\QA\\rezult.txt");
             Transport.send(message);
             System.out.println("Done");
 
